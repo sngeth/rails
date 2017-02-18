@@ -34,8 +34,10 @@ class ParamsWrapperTest < ActionController::TestCase
     end
   end
 
-  class Person < ActiveRecord::Base
-    store :settings, accessors: [ :color, :size ], coder: JSON
+  class Person
+    def self.stores_attributes
+      { settings: [:color, :homepage, :height] }
+    end
 
     def self.attribute_names
       []
